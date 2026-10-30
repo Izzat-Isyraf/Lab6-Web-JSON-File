@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Welcome to JSON</h1>
+        
+    </body>
+    <script>
+        async function displayBooks() {
+            try {
+                const response = await fetch("books.json");
+                const data = await response.json();
+
+                console.log("First Book Title: ", data[0].title);
+                console.log("Second Book Author: ", data[1].author);
+
+                console.log("Genres of All Books: ");
+
+                data.forEach(books => {
+                    console.log(books.title + ": " + books.genres.join(","));
+                });
+            } catch (error) {
+                console.log("Error", error);
+            
+            }
+        } 
+
+        
+
+        displayBooks();
+    </script>
+</html>
+
